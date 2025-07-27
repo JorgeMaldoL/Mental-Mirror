@@ -69,8 +69,7 @@ if practice_type:
             with col_start:
                 if st.button("Start Timer"):
                     if total_minutes > 0:
-                        # Start the timer using your TimerLogic
-                        result = st.session_state.timer_logic.timer_start(total_minutes)
+                        st.session_state.timer_logic.start(total_minutes)
                         if timer_seconds > 0:
                             st.success(f"Timer started for {timer_minutes}m {timer_seconds}s! Start speaking now.")
                         else:
@@ -82,11 +81,10 @@ if practice_type:
             with col_stop:
                 if st.session_state.timer_logic.is_running:
                     if st.button("Stop Timer"):
-                        st.session_state.timer_logic.stop_timer()
+                        st.session_state.timer_logic.stop()
                         st.info("Timer stopped.")
                         st.rerun()
                 else:
-                    # Show disabled stop button when timer is not running
                     st.button("Stop Timer", disabled=True)
             
             # Display countdown if timer is running
