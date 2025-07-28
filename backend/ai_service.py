@@ -21,3 +21,4 @@ class AIService:
             print(f"Error getting AI response: {e}")
             return None
         
+    def get_record()

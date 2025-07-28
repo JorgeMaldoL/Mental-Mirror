@@ -44,7 +44,7 @@ if practice_type:
         
         st.markdown("**Instructions:**")
         st.markdown("- Speak out loud and practice your response")
-        st.markdown("- Record yourself if possible")
+        st.markdown("- Record yourself")
         st.markdown("- Focus on clarity, pace, and confidence")
         
         # Timer section

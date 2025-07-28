@@ -7,8 +7,9 @@ env_path = project_root / '.env'
 load_dotenv(env_path)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-AI_MODEL = os.getenv("AI_MODEL", "gpt-4o-mini")
-MAX_TOKENS = int(os.getenv("MAX_TOKENS", "1000"))
+AI_MODEL =  "gpt-4o-mini"
+WHISPER_MODEL = "whisper-1"
+MAX_TOKENS = int(1000)
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
