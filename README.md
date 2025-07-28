@@ -4,10 +4,9 @@ A comprehensive AI-powered learning platform built with Streamlit that helps you
 
 ## 🎬 Demo
 See Mental Mirror in action:
+![Mental Mirror Demo](assets/Mental%20Mirror.gif)
 
-![Mental Mirror Demo](assets/demo-video.mp4)
-
-*🎥 [Click here to view the full demo video](assets/demo-video.mp4)*
+*� Live demo showcasing the AI-powered learning platform in action*
 
 
 ## ✨ Features
