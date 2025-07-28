@@ -3,7 +3,7 @@
 A comprehensive AI-powered learning platform built with Streamlit that helps you improve your understanding through multiple proven learning techniques.
 
 ## 🌐 Live Application
-**Try Mental Mirror now:** [https://mental-mirror.streamlit.app](https://mental-mirror.streamlit.app)
+**Try Mental Mirror now:** [https://mental-mirror-mc7zlou4sqyexjmwwkpgou.streamlit.app](https://mental-mirror-mc7zlou4sqyexjmwwkpgou.streamlit.app)
 
 # I apologize for adding this but otherwise the you'd have to create api's and the database structure to work.  
 
