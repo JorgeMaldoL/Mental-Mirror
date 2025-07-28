@@ -2,12 +2,18 @@
 
 A comprehensive AI-powered learning platform built with Streamlit that helps you improve your understanding through multiple proven learning techniques.
 
+## 🎬 Demo
+See Mental Mirror in action:
+<video width="100%" controls>
+  <source src="assets/demo-video.mp4" type="video/mp4">
+</video>
+
 ## ✨ Features
 
 - **📝 AI Journal Analysis**: Write journal entries and get AI feedback with completion assessment
 - **🏫 Feynman Mode**: Practice explaining complex concepts simply with AI evaluation
 - **🎤 Speech Practice**: Upload audio recordings for transcription and AI feedback
-- ** User Authentication**: Secure login/signup with Supabase
+- **🔐 User Authentication**: Secure login/signup with Supabase
 - **💾 Data Persistence**: All sessions saved to database with user isolation
 
 ## 🚀 Quick Start
@@ -65,7 +71,7 @@ Mental-Mirror/
 │   ├── your_journal.py # Journal analysis feature
 │   ├── feynman_mode.py # Feynman technique practice
 │   ├── speech_practice.py # Speech timing practice
-│   ├── summarize.py   # Summary training
+│   ├── summarize.py   # Summary training [not done]
 │   └── auth.py        # Authentication helpers
 ├── backend/           # Business logic and services
 │   ├── ai_service.py  # OpenAI integration
