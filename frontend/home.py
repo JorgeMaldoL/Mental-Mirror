@@ -3,7 +3,6 @@ from auth import check_authentication, show_logout_button
 
 st.set_page_config(page_title="Mental Mirror", page_icon="🧠", layout="wide")
 
-# Check authentication first
 check_authentication()
 
 st.sidebar.title("Mental Mirror")
@@ -16,6 +15,6 @@ Your_Journal = st.Page("your_journal.py", title="Your Journal", icon="📝")
 Feynman_Mode = st.Page("feynman_mode.py", title="Feynman mode", icon="🏫")
 Speech_Practice = st.Page("speech_practice.py", title="Speech Practice", icon="🗣️")
 Summarize_Training = st.Page("summarize_training.py", title="Summarize Training", icon="🎯")
-
-pg = st.navigation([Your_Journal, Feynman_Mode, Speech_Practice, Summarize_Training])
+#summarize training is being worked on and its not ready yet
+pg = st.navigation([Your_Journal, Feynman_Mode, Speech_Practice,])
 pg.run()

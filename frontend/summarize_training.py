@@ -3,7 +3,6 @@ import streamlit as st
 st.title("🎯 Summarize Training")
 st.markdown("Improve your ability to distill complex information into clear, concise summaries.")
 
-# Input method selection
 input_method = st.radio(
     "How would you like to provide content to summarize?",
     ["Paste Text", "Upload File", "Enter URL"]
@@ -32,13 +31,11 @@ if content_to_summarize:
     st.markdown("---")
     st.subheader("📝 Create Your Summary")
     
-    # Summary options
     summary_type = st.selectbox(
         "What type of summary?",
         ["Key Points (Bullet Points)", "Executive Summary", "One Paragraph", "Tweet-sized (280 chars)"]
     )
     
-    # Target audience
     audience = st.selectbox(
         "Target audience:",
         ["General Public", "Students", "Professionals", "Experts in the field"]
@@ -68,7 +65,6 @@ if content_to_summarize:
             else:
                 st.warning("Please write a summary before saving.")
     
-    # Summary evaluation
     if user_summary:
         st.markdown("---")
         st.subheader("📊 Self-Evaluation")
@@ -83,13 +79,3 @@ if content_to_summarize:
             conciseness = st.slider("Conciseness (1-10):", 1, 10, 5)
             accuracy = st.slider("Accuracy (1-10):", 1, 10, 5)
 
-st.markdown("---")
-st.subheader("✅ Good Summary Checklist:")
-st.markdown("""
-- **Captures main ideas** without unnecessary details
-- **Uses your own words** (not just copy-paste)
-- **Maintains original meaning** and context
-- **Appropriate length** for the purpose
-- **Clear and readable** for the target audience
-- **Logically organized** information
-""")

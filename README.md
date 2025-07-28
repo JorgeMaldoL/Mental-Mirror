@@ -6,9 +6,8 @@ A comprehensive AI-powered learning platform built with Streamlit that helps you
 
 - **📝 AI Journal Analysis**: Write journal entries and get AI feedback with completion assessment
 - **🏫 Feynman Mode**: Practice explaining complex concepts simply with AI evaluation
-- **🎤 Speech Practice**: Timed speaking exercises to improve confidence and clarity
-- **📄 Summary Training**: Practice creating summaries with AI feedback
-- **🔐 User Authentication**: Secure login/signup with Supabase
+- **🎤 Speech Practice**: Upload audio recordings for transcription and AI feedback
+- ** User Authentication**: Secure login/signup with Supabase
 - **💾 Data Persistence**: All sessions saved to database with user isolation
 
 ## 🚀 Quick Start
@@ -72,8 +71,9 @@ Mental-Mirror/
 │   ├── ai_service.py  # OpenAI integration
 │   ├── auth_service.py # Supabase authentication
 │   ├── supabase_service.py # Database operations
+│   ├── speech_service.py # Audio processing
+│   ├── record_logic.py # File upload handling
 │   ├── prompt_templates.py # AI prompt templates
-│   ├── timer_logic.py # Timer functionality
 │   └── config.py      # Environment configuration
 └── .env.example       # Environment variables template
 ```
@@ -89,11 +89,22 @@ Mental-Mirror/
 
 ### Database Schema
 
-The app uses these Supabase tables:
-- `journal_entries` - User journal entries and AI responses
-- `feynman_sessions` - Feynman technique explanations and feedback
-- `speech_sessions` - Speech practice session ratings
-- `summary_sessions` - Summary practice and AI evaluations
+1. **Create tables in Supabase:**
+   - Go to your Supabase project dashboard
+   - Navigate to SQL Editor
+   - Copy and paste the contents of `database_setup.sql`
+   - Run the SQL commands to create all tables and policies
+
+2. **Tables created:**
+   - `journal_entries` - User journal entries and AI responses
+   - `feynman_sessions` - Feynman technique explanations and feedback
+   - `speech_sessions` - Speech practice session ratings and feedback
+   - `summary_sessions` - Summary practice and AI evaluations
+
+3. **Security:**
+   - All tables have Row Level Security (RLS) enabled
+   - Users can only access their own data
+   - Foreign key constraints ensure data integrity
 
 ## 🛡️ Security
 

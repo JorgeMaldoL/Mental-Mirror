@@ -8,7 +8,6 @@ from supabase_service import SupabaseService
 from auth_service import AuthService
 from auth import check_authentication
 
-# Ensure user is authenticated
 check_authentication()
 
 st.title("📝 Your Journal")

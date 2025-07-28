@@ -8,12 +8,11 @@ class SupabaseService:
     def __init__(self, auth_service=None):
         self.client: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
         
-        # Set the session if we have tokens stored
         if hasattr(st.session_state, 'access_token') and hasattr(st.session_state, 'refresh_token'):
             try:
                 self.client.auth.set_session(st.session_state.access_token, st.session_state.refresh_token)
             except:
-                pass  # If tokens are invalid, continue without auth
+                pass
     
     def save_journal_entry(self, user_id: str, content: str, ai_response: str = None) -> bool:
         try:
@@ -79,11 +78,25 @@ class SupabaseService:
                 "clarity_rating": clarity,
                 "notes": notes
             }
-            self.client.table("speech_sessions").insert(session_data).execute()
+            
+            result = self.client.table("speech_sessions").insert(session_data).execute()
             return True
         except Exception as e:
             print(f"Error saving speech session: {e}")
             return False
+    
+    def get_speech_sessions(self, user_id: str, limit: int = 10) -> List[Dict]:
+        try:
+            result = self.client.table("speech_sessions")\
+                .select("*")\
+                .eq("user_id", user_id)\
+                .order("created_at", desc=True)\
+                .limit(limit)\
+                .execute()
+            return result.data
+        except Exception as e:
+            print(f"Error fetching speech sessions: {e}")
+            return []
     
     def save_summary_session(self, user_id: str, original_text: str, user_summary: str, 
                             summary_type: str, audience: str, ai_feedback: str = None) -> bool:
