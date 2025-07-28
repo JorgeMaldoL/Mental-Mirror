@@ -2,6 +2,11 @@
 
 A comprehensive AI-powered learning platform built with Streamlit that helps you improve your understanding through multiple proven learning techniques.
 
+## 🌐 Live Application
+**Try Mental Mirror now:** [https://mental-mirror.streamlit.app](https://mental-mirror.streamlit.app)
+
+# I apologize for adding this but otherwise the you'd have to create api's and the database structure to work.  
+
 ## 🎬 Demo
 See Mental Mirror in action:
 ![Mental Mirror Demo](assets/Mental%20Mirror.gif)
@@ -62,6 +67,32 @@ See Mental Mirror in action:
    ```
 
 6. **Open your browser** and navigate to `http://localhost:####`
+
+## 🌐 Deployment
+
+### Streamlit Community Cloud (Recommended)
+
+1. **Push your code to GitHub** (make sure it's public or you have a Streamlit Cloud account)
+
+2. **Go to [share.streamlit.io](https://share.streamlit.io)**
+
+3. **Connect your GitHub account** and select this repository
+
+4. **Set the main file path** to `frontend/home.py`
+
+5. **Add your environment variables** in the Streamlit Cloud dashboard:
+   - `OPENAI_API_KEY` - Your OpenAI API key
+   - `SUPABASE_URL` - Your Supabase project URL
+   - `SUPABASE_KEY` - Your Supabase anon key
+
+6. **Deploy** - Your app will be available at `https://your-app-name.streamlit.app`
+
+### Alternative Hosting Options
+
+- **Heroku**: Use the included `runtime.txt` and deploy with git
+- **Railway**: Connect GitHub repo and deploy automatically
+- **Replit**: Import from GitHub and run with `streamlit run frontend/home.py`
+- **DigitalOcean App Platform**: Deploy directly from GitHub
 
 ## 🏗️ Architecture
 
