@@ -38,7 +38,15 @@ class AuthService:
                 st.session_state.refresh_token = response.session.refresh_token
             return response
         except Exception as e:
-            st.error(f"Sign in failed: {str(e)}")
+            error_message = str(e).lower()
+            if "email not confirmed" in error_message or "email_not_confirmed" in error_message:
+                st.error("❌ Please check your email and click the confirmation link before signing in.")
+            elif "invalid" in error_message and "credentials" in error_message:
+                st.error("❌ Invalid email or password. Please check your credentials.")
+            elif "invalid" in error_message and "email" in error_message:
+                st.error("❌ Please enter a valid email address.")
+            else:
+                st.error(f"❌ Sign in failed: {str(e)}")
             return None
     
     def sign_out(self):

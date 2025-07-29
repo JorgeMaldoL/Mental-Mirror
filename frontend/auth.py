@@ -9,6 +9,17 @@ def show_login_page():
     st.title("🪞 Mental Mirror")
     st.markdown("### Welcome! Please sign in to continue your learning journey.")
     
+    with st.expander("ℹ️ New user? Read this first"):
+        st.markdown("""
+        **How to get started:**
+        1. **Sign Up** with a **valid email address**
+        2. **Check your email** for a confirmation link
+        3. **Click the confirmation link** - you'll be automatically signed in
+        4. Start using Mental Mirror! 🎉
+        
+        **Note:** You must verify your email before you can sign in.
+        """)
+    
     auth_service = AuthService()
     
     tab1, tab2 = st.tabs(["Sign In", "Sign Up"])
@@ -22,16 +33,17 @@ def show_login_page():
             
             if submit_login:
                 if email and password:
-                    response = auth_service.sign_in(email, password)
-                    if response and response.user:
-                        st.session_state.user = response.user
-                        st.session_state.authenticated = True
-                        st.success("Successfully signed in!")
-                        st.rerun()
+                    if "@" not in email or "." not in email:
+                        st.error("❌ Please enter a valid email address.")
                     else:
-                        st.error("Invalid email or password")
+                        response = auth_service.sign_in(email, password)
+                        if response and response.user:
+                            st.session_state.user = response.user
+                            st.session_state.authenticated = True
+                            st.success("✅ Successfully signed in!")
+                            st.rerun()
                 else:
-                    st.error("Please enter both email and password")
+                    st.error("❌ Please enter both email and password")
     
     with tab2:
         st.subheader("Create Account")
@@ -43,19 +55,21 @@ def show_login_page():
             
             if submit_signup:
                 if new_email and new_password and confirm_password:
-                    if new_password == confirm_password:
+                    if "@" not in new_email or "." not in new_email:
+                        st.error("❌ Please enter a valid email address.")
+                    elif new_password == confirm_password:
                         if len(new_password) >= 6:
                             response = auth_service.sign_up(new_email, new_password)
                             if response and response.user:
                                 st.success("✅ Account created! Please check your email and click the confirmation link to activate your account. You'll be automatically signed in after confirmation.")
                             else:
-                                st.error("Account creation failed")
+                                st.error("❌ Account creation failed. Please try again.")
                         else:
-                            st.error("Password must be at least 6 characters long")
+                            st.error("❌ Password must be at least 6 characters long")
                     else:
-                        st.error("Passwords do not match")
+                        st.error("❌ Passwords do not match")
                 else:
-                    st.error("Please fill in all fields")
+                    st.error("❌ Please fill in all fields")
 
 def check_authentication():
     if 'authenticated' not in st.session_state:
