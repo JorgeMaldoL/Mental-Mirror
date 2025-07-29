@@ -47,7 +47,7 @@ def show_login_page():
                         if len(new_password) >= 6:
                             response = auth_service.sign_up(new_email, new_password)
                             if response and response.user:
-                                st.success("Account created! Please check your email to verify your account, then sign in.")
+                                st.success("✅ Account created! Please check your email and click the confirmation link to activate your account. You'll be automatically signed in after confirmation.")
                             else:
                                 st.error("Account creation failed")
                         else:
@@ -60,6 +60,33 @@ def show_login_page():
 def check_authentication():
     if 'authenticated' not in st.session_state:
         st.session_state.authenticated = False
+    
+    # Check for email confirmation in URL parameters
+    query_params = st.query_params
+    if 'access_token' in query_params and 'refresh_token' in query_params:
+        try:
+            auth_service = AuthService()
+            access_token = query_params['access_token']
+            refresh_token = query_params['refresh_token']
+            
+            # Set the session with the tokens from email confirmation
+            auth_service.supabase.auth.set_session(access_token, refresh_token)
+            
+            # Store in session state
+            st.session_state.access_token = access_token
+            st.session_state.refresh_token = refresh_token
+            st.session_state.authenticated = True
+            
+            # Get user info
+            user = auth_service.get_current_user()
+            if user:
+                st.session_state.user = user
+                st.success("Email confirmed! Welcome to Mental Mirror!")
+                # Clear the URL parameters
+                st.query_params.clear()
+                st.rerun()
+        except Exception as e:
+            st.error(f"Email confirmation failed: {str(e)}")
     
     if not st.session_state.authenticated:
         auth_service = AuthService()

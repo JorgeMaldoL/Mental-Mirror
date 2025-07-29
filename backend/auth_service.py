@@ -8,9 +8,15 @@ class AuthService:
     
     def sign_up(self, email: str, password: str):
         try:
+            # Get the current URL for redirect
+            redirect_url = "https://mental-mirror-mc7zlou4sqyexjmwwkpgou.streamlit.app"
+            
             response = self.supabase.auth.sign_up({
                 "email": email,
-                "password": password
+                "password": password,
+                "options": {
+                    "email_redirect_to": redirect_url
+                }
             })
             return response
         except Exception as e:
